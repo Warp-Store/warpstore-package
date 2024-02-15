@@ -1,5 +1,5 @@
 {
-    "name": "@rethred/mercadopago-sdk",
+    "name": "@warpstore/warpstore-package",
     "version": "1.0.0",
     "description": "",
     "main": "dist/src/main.js",
