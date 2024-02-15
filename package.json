@@ -4,7 +4,7 @@
     "description": "",
     "main": "dist/src/main.js",
     "types": "dist/src/main.d.ts",
-    "repository": "https://github.com/rethRed/reth-mercadopago-sdk",
+    "repository": "https://github.com/Warp-Store/warpstore-package",
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "ttsc",
