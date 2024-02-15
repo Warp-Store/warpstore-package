@@ -3,8 +3,10 @@ import { Either, success } from "@/core/logic"
 import { ProductInfoDto, StoreThemeDto } from "./dtos"
 import { RequestManager } from "@/lib"
 import { GetStoreInfoError } from "./errors/errors"
+import { WarpStore } from "@/main"
 
 export class TemplateV1 {
+
 
     async getStoreInfo(input: TemplateV1.GetStoreInfoInputDto): Promise<Either<GetStoreInfoError, StoreThemeDto>>{
         return await RequestManager.makeRequest<StoreThemeDto, GetStoreInfoError>("/template/v1/store-info", {

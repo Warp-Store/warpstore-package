@@ -1,17 +1,24 @@
 import { CustomDomainError, DomainError } from "@/core/errors";
 import { Either, failure, success } from "@/core/logic";
+import { WarpStore } from "@/main";
 import axios, { AxiosResponse } from "axios"
 
-const api = axios.create({
-    baseURL: 'https://api.warpstore.app',
-    timeout: 1000,
-    validateStatus: () => true
-})
 
 export class RequestManager {
 
+    static getApiProvider(){
+        return axios.create({
+            baseURL: WarpStore.apiUrl,
+            timeout: 1000,
+            validateStatus: () => true
+        })
+    }
+
     static async makeRequest<TResponse, TError,>(path: string, httpInput: RequestManager.HttpInput = {} as any): Promise<Either<TError, TResponse>> {
+    
         const { body, headers, query, method } = httpInput
+
+        const api = RequestManager.getApiProvider()
 
         let response: AxiosResponse
 
