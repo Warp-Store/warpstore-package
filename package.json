@@ -1,6 +1,6 @@
 {
     "name": "@rethred/mercadopago-sdk",
-    "version": "1.0.18",
+    "version": "1.0.0",
     "description": "",
     "main": "dist/src/main.js",
     "types": "dist/src/main.d.ts",
