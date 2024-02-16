@@ -1,5 +1,5 @@
 import { RequestManager } from "./lib";
-import { Template } from "./template";
+import { Template } from "./modules/template";
 
 export class WarpStore {
     requestManager: RequestManager 
