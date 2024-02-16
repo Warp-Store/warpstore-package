@@ -3,7 +3,7 @@ import { PaymentMethodsEnum } from "../template/versions/dtos"
 export type Item = {
     productId: string,
     quantity: number
-    variables: Record<string, string> | undefined
+    variables?: Record<string, string> | undefined
 }
 
 export type PlaceOrderInputDto = {
