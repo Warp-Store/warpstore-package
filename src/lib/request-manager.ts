@@ -35,7 +35,7 @@ export class RequestManager {
         }
 
         if (response.status !== 200) {
-            return failure(new CustomDomainError(response.data?.error?.name)) as any
+            return failure(new CustomDomainError(response.data?.error?.name, response.data?.error)) as any
         }
 
         return success(response.data) as any
