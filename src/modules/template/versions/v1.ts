@@ -1,6 +1,6 @@
 import { DomainError } from "@/core/errors"
 import { Either, failure, success } from "@/core/logic"
-import { ProductInfoDto, StoreInfoDto } from "./dtos"
+import { ProductInfoDto, StoreInfoDto, ValidateProductsDto } from "./dtos"
 import { RequestManager } from "@/lib"
 import { GetStoreInfoError } from "./errors/errors"
 import { WarpStore } from "@/main"
@@ -31,6 +31,13 @@ export class TemplateV1 {
         return await RequestManager.makeRequest<ProductInfoDto, DomainError>("/template/v1/products", {
             method: "GET",
             query: input
+        })
+    }
+
+    async validateProducts(input: { productsIds: string[] }): Promise<Either<DomainError, ValidateProductsDto>>{
+        return await RequestManager.makeRequest<ValidateProductsDto, DomainError>("/template/v1/validate-products", {
+            method: "POST",
+            body: input
         })
     }
 }

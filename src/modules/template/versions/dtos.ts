@@ -72,18 +72,25 @@ export type StoreInfoDto = {
     }[]
 }
 
+export type ProductsDetails = {
+    id: string
+    name: string
+    description: string
+    price: number
+    image: string
+    stockQuantity: number
+}
+
 export type ProductInfoDto = {
-    products: {
-        id: string
-        name: string
-        description: string
-        price: number
-        image: string
-        stockQuantity: number
-    }
+    products: ProductsDetails
     limit: number
     page: number
     lastPage: number
     quantityReturned: number
     totalQuantity: number | null
+}
+
+export type ValidateProductsDto = {
+    productsNotFound: string[]
+    products: ProductsDetails
 }
