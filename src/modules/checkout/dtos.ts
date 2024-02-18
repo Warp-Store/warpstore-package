@@ -19,10 +19,11 @@ export type PlaceOrderInputDto = {
     couponCode?: string
     discordAccessToken?: string
     paymentGateway: keyof typeof PaymentMethodsEnum
-}  
+}
 
 export type PlaceOrderOutputDto = {
     id: string
+    approved: boolean
     qrCode?: string
     code?: string
     paymentLink?: string
