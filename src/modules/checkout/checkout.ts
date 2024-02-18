@@ -8,7 +8,7 @@ import { PlaceOrderError } from "./errors/errors"
 export class Checkout {
 
 
-    async placeOrder(input: PlaceOrderInputDto): Promise<Either<PlaceOrderError, PlaceOrderOutputDto>>{
+    async placeOrder(input: PlaceOrderInputDto): Promise<Either<PlaceOrderError, PlaceOrderOutputDto>> {
         return await RequestManager.makeRequest<PlaceOrderOutputDto, PlaceOrderError>("/store/checkout/order/place-order", {
             method: "POST",
             body: input
