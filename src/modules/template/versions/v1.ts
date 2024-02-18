@@ -11,15 +11,20 @@ export class TemplateV1 {
 
     discordLogin: DiscordLogin = new DiscordLogin()
     coupon: Coupon = new Coupon()
+    store: Store = new Store()
+    product: Product = new Product()
 
-    async getStoreInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreInfoDto>>{
+}
+
+class Store {
+    async getInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreInfoDto>>{
         const { clientInfo, ...props } = input
-
+    
         if(clientInfo) {
             if(!validateIp(clientInfo?.ip)) return failure(new GetStoreInfoError("InvalidIpError"))
             if(typeof clientInfo?.userAgent !== "string") return failure(new GetStoreInfoError("InvalidUserAgent"))
         }
-
+    
         return await RequestManager.makeRequest<StoreInfoDto, GetStoreInfoError>("/template/v1/store-info", {
             method: "GET",
             query: props,
@@ -30,20 +35,23 @@ export class TemplateV1 {
         })
     }
 
+}
+
+class Product {
     async getProducts(input: TemplateV1.GetProductsInputDto): Promise<Either<DomainError, ProductInfoDto>>{
         return await RequestManager.makeRequest<ProductInfoDto, DomainError>("/template/v1/products", {
             method: "GET",
             query: input
         })
     }
-
+    
     async validateProducts(input: { productsIds: string[] }): Promise<Either<DomainError, ValidateProductsDto>>{
         return await RequestManager.makeRequest<ValidateProductsDto, DomainError>("/template/v1/validate-products", {
             method: "POST",
             body: input
         })
     }
-
+    
 }
 
 class DiscordLogin {
