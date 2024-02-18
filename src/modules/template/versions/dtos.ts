@@ -12,7 +12,7 @@ export const PaymentMethodsEnum = {
     STRIPE: 'STRIPE',
 } as const
 
-export type StoreThemeDto = {
+export type StoreInfoDto = {
     id: string
     title: string
     description: string
@@ -23,6 +23,7 @@ export type StoreThemeDto = {
     domain: string | undefined
     currency: string
     keywords: string
+    template: number
     plan: keyof typeof PlanEnum
     theme: {
         primaryColor: string

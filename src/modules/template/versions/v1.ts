@@ -1,6 +1,6 @@
 import { DomainError } from "@/core/errors"
 import { Either, failure, success } from "@/core/logic"
-import { ProductInfoDto, StoreThemeDto } from "./dtos"
+import { ProductInfoDto, StoreInfoDto } from "./dtos"
 import { RequestManager } from "@/lib"
 import { GetStoreInfoError } from "./errors/errors"
 import { WarpStore } from "@/main"
@@ -9,7 +9,7 @@ import { validateIp } from "@/core/validators"
 
 export class TemplateV1 {
 
-    async getStoreInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreThemeDto>>{
+    async getStoreInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreInfoDto>>{
         const { clientInfo, ...props } = input
 
         if(clientInfo) {
@@ -17,7 +17,7 @@ export class TemplateV1 {
             if(typeof clientInfo?.userAgent !== "string") return failure(new GetStoreInfoError("InvalidUserAgent"))
         }
 
-        return await RequestManager.makeRequest<StoreThemeDto, GetStoreInfoError>("/template/v1/store-info", {
+        return await RequestManager.makeRequest<StoreInfoDto, GetStoreInfoError>("/template/v1/store-info", {
             method: "GET",
             query: props,
             headers: clientInfo ? {
