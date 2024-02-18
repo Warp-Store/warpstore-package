@@ -62,7 +62,12 @@ export type StoreInfoDto = {
         youtube?: string
         discord?: string
     },
-    paymentMethods: keyof typeof PaymentMethodsEnum[]
+    gateways: {
+        name: keyof typeof PaymentMethodsEnum
+        fee: number,
+        feeType: "FIXED" | "PERCENTAGE",
+        feeEnabled: boolean
+    }[]
     
     categories: {
         id: string
@@ -92,5 +97,5 @@ export type ProductInfoDto = {
 
 export type ValidateProductsDto = {
     productsNotFound: string[]
-    products: ProductsDetails
+    products: ProductsDetails[]
 }

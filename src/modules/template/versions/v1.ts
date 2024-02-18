@@ -9,6 +9,8 @@ import { validateIp } from "@/core/validators"
 
 export class TemplateV1 {
 
+    discordLogin: DiscordLogin = new DiscordLogin()
+
     async getStoreInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreInfoDto>>{
         const { clientInfo, ...props } = input
 
@@ -40,8 +42,26 @@ export class TemplateV1 {
             body: input
         })
     }
+
 }
 
+class DiscordLogin {
+    
+    async getLoginUrl(input: { storeId: string }): Promise<Either<DomainError, { url: string }>>{
+        return await RequestManager.makeRequest< { url: string }, DomainError>("/template/v1/discord-login-url", {
+            method: "GET",
+            query: input
+        })
+    }
+    
+    async changeCodeForToken(input: { code: string, storeId: string }): Promise<Either<DomainError, { accessToken: string }>>{
+        return await RequestManager.makeRequest< { accessToken: string }, DomainError>("/template/v1/discord-login/change-code-for-token", {
+            method: "GET",
+            query: input
+        })
+    }
+    
+}
 
 export namespace TemplateV1 {
 
