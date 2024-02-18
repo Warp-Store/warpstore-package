@@ -41,7 +41,7 @@ export namespace TemplateV1 {
     export type GetProductsInputDto = {
         categoryId: string
         limit?: number
-        skip?: number
+        page?: number
     }
 
     export type GetStoreInfoInputDto = {

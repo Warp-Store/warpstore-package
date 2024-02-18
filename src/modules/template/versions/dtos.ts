@@ -81,6 +81,7 @@ export type ProductInfoDto = {
         image: string
         stockQuantity: number
     }
+    page: number
     lastPage: number
     quantityReturned: number
     totalQuantity: number | null
