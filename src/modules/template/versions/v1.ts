@@ -2,7 +2,7 @@ import { DomainError } from "@/core/errors"
 import { Either, failure, success } from "@/core/logic"
 import { ProductInfoDto, StoreInfoDto, ValidateProductsDto } from "./dtos"
 import { RequestManager } from "@/lib"
-import { GetStoreInfoError } from "./errors/errors"
+import { GetStoreInfoError, ValidateCouponError } from "./errors/errors"
 import { WarpStore } from "@/main"
 import { validateIp } from "@/core/validators"
 
@@ -10,6 +10,7 @@ import { validateIp } from "@/core/validators"
 export class TemplateV1 {
 
     discordLogin: DiscordLogin = new DiscordLogin()
+    coupon: Coupon = new Coupon()
 
     async getStoreInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreInfoDto>>{
         const { clientInfo, ...props } = input
@@ -58,6 +59,17 @@ class DiscordLogin {
         return await RequestManager.makeRequest< { accessToken: string }, DomainError>("/template/v1/discord-login/change-code-for-token", {
             method: "GET",
             query: input
+        })
+    }
+    
+}
+
+class Coupon {
+    
+    async validateCoupon(input: { storeId: string, code: string }): Promise<Either<ValidateCouponError, { url: string }>>{
+        return await RequestManager.makeRequest< { url: string }, ValidateCouponError>("/template/v1/coupon/validate-coupon", {
+            method: "POST",
+            body: input
         })
     }
     

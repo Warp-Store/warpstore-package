@@ -1,13 +1,23 @@
 import { CustomDomainError } from "@/core/errors";
 
-type Error = "NoParamsProvidedError" |  "StoreNotFoundError" | "InvalidRequestError"
+type GetStoreError = "NoParamsProvidedError" |  "StoreNotFoundError" | "InvalidRequestError"
  | "InvalidIpError" | "InvalidUserAgent"
 
-export class GetStoreInfoError extends CustomDomainError<Error> {
+export class GetStoreInfoError extends CustomDomainError<GetStoreError> {
 
-    constructor(name: Error) {
+    constructor(name: GetStoreError) {
         super(name)
     }
 }
+
+type ValidateCoupon = "CouponNotEnabledError" | "CouponIsExpiredError" | "CouponUseLimitReachedError" | "SignatureNotFoundError"
+
+export class ValidateCouponError extends CustomDomainError<ValidateCoupon> {
+
+    constructor(name: ValidateCoupon) {
+        super(name)
+    }
+}
+
 
 
