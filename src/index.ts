@@ -6,8 +6,12 @@ import { WarpStore } from "./main"
 
     const warpstore = new WarpStore()
     WarpStore.setApiUrl("http://localhost:5000")
-    const response = await warpstore.template.v1.getProducts({
-        categoryId: "2865c691-f4a5-471e-a690-800f5d50c295"     
+    const response = await warpstore.template.v1.getStoreInfo({
+        subDomain: "test",
+        clientInfo: {
+            ip: "",
+            userAgent: ""
+        }
     })
 
     console.log(response.value)
