@@ -5,6 +5,9 @@
     "main": "dist/src/main.js",
     "types": "dist/src/main.d.ts",
     "repository": "https://github.com/Warp-Store/warpstore-package",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "ttsc",
