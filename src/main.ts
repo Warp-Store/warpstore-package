@@ -3,7 +3,7 @@ import { Checkout } from "./modules/checkout/checkout";
 import { Template } from "./modules/template";
 
 export class WarpStore {
-    requestManager: RequestManager
+    private requestManager: RequestManager
     checkout: Checkout 
     template: Template 
 
