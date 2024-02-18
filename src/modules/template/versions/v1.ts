@@ -12,16 +12,18 @@ export class TemplateV1 {
     async getStoreInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreThemeDto>>{
         const { clientInfo, ...props } = input
 
-        if(!validateIp(clientInfo?.ip)) return failure(new GetStoreInfoError("InvalidIpError"))
-        if(typeof clientInfo?.userAgent !== "string") return failure(new GetStoreInfoError("InvalidUserAgent"))
+        if(clientInfo) {
+            if(!validateIp(clientInfo?.ip)) return failure(new GetStoreInfoError("InvalidIpError"))
+            if(typeof clientInfo?.userAgent !== "string") return failure(new GetStoreInfoError("InvalidUserAgent"))
+        }
 
         return await RequestManager.makeRequest<StoreThemeDto, GetStoreInfoError>("/template/v1/store-info", {
             method: "GET",
             query: props,
-            headers: {
+            headers: clientInfo ? {
                 "cf-connecting-ip": clientInfo?.ip,
                 "user-agent": clientInfo?.userAgent
-            }
+            } : undefined
         })
     }
 
@@ -45,7 +47,7 @@ export namespace TemplateV1 {
     export type GetStoreInfoInputDto = {
         subDomain?: string
         domain?: string
-        clientInfo: {
+        clientInfo?: {
             ip: string
             userAgent: string
         }
