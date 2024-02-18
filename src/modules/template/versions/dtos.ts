@@ -25,6 +25,9 @@ export type StoreInfoDto = {
     keywords: string
     template: number
     plan: keyof typeof PlanEnum
+    discordLogin: {
+        isEnabled: boolean
+    }
     theme: {
         primaryColor: string
         secondaryColor: string
@@ -76,7 +79,9 @@ export type ProductInfoDto = {
         description: string
         price: number
         image: string
+        stockQuantity: number
     }
+    lastPage: number
     quantityReturned: number
-    totalQuantity: number
+    totalQuantity: number | null
 }
