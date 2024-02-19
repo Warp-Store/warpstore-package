@@ -1,6 +1,6 @@
 import { DomainError } from "@/core/errors"
 import { Either, failure, success } from "@/core/logic"
-import { ProductInfoDto, StoreInfoDto, ValidateProductsDto } from "./dtos"
+import { DiscordUserDto, ProductInfoDto, StoreInfoDto, ValidateProductsDto } from "./dtos"
 import { RequestManager } from "@/lib"
 import { GetStoreInfoError, ValidateCouponError } from "./errors/errors"
 import { WarpStore } from "@/main"
@@ -70,6 +70,12 @@ class DiscordLogin {
         })
     }
     
+    async getCurrentUser(input: { accessToken: string, storeId: string }): Promise<Either<DomainError, DiscordUserDto>>{
+        return await RequestManager.makeRequest<DiscordUserDto, DomainError>("/template/v1/discord-login/current-user", {
+            method: "GET",
+            query: input
+        })
+    }
 }
 
 class Coupon {
