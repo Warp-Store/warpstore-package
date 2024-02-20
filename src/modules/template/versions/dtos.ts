@@ -1,6 +1,6 @@
 
 
-export  const  PlanEnum = {
+export const PlanEnum = {
     BASIC: "BASIC",
     SUPER: "SUPER",
     ADVANCED: "ADVANCED"
@@ -40,7 +40,7 @@ export type StoreInfoDto = {
             name: string
             image: string
             price: number
-        } 
+        }
         DISCORD?: {
             discordURL: string
         }
@@ -50,10 +50,10 @@ export type StoreInfoDto = {
         }
     },
     visualEffects: {
-        SNOW_FLAKE?: { 
-            color: string, 
-            radius: number, 
-            snowFlakeCount: number 
+        SNOW_FLAKE?: {
+            color: string,
+            radius: number,
+            snowFlakeCount: number
         }
     },
     socialMedia: {
@@ -68,12 +68,12 @@ export type StoreInfoDto = {
         feeType: "FIXED" | "PERCENTAGE",
         feeEnabled: boolean
     }[]
-    
+
     categories: {
         id: string
         title: string
         slug: string
-        description: string   
+        description: string
     }[]
 }
 
