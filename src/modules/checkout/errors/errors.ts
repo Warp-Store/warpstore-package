@@ -5,7 +5,7 @@ type Error =  "GatewayNotEnabledError" |
     "StoreNotFoundError" |  
     "InsufficientStockError" | 
     "ProductNotFromSameStoreError" | 
-    "LimitPerUserReachedError" | string
+    "LimitPerUserReachedError" | "StoreIdNotProvidedError" | string
 
 export class PlaceOrderError extends CustomDomainError<Error> {
 

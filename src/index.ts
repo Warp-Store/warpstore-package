@@ -8,7 +8,7 @@ import { WarpStore } from "./main"
     WarpStore.setApiUrl("http://localhost:5000")
     const response = await warpstore.template.v1.discordLogin.getCurrentUser({
         storeId: "30363d97-f8d7-4dea-af2c-0451f7bca15d",
-        accessToken: "11aZi3CExHn1NTUHfShmz8esujdwOdm"
+        accessToken: "11aZi3CExHn1NTUHfShmz8esujwOdm"
     })
 
     console.log(response.value)
@@ -18,4 +18,4 @@ import { WarpStore } from "./main"
     }
     
 })()
-"sdddddsddddddddddddd"
+"sdddddsdddddddddddddddddd"
