@@ -107,3 +107,11 @@ export type DiscordUserDto = {
     username: string
     email: string
 }
+
+export type CouponDto = {
+    amount: number,
+    type: "FIXED" | "PERCENTAGE",
+    minValue: number,
+}
+
+

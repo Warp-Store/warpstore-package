@@ -1,6 +1,6 @@
 import { DomainError } from "@/core/errors"
 import { Either, failure, success } from "@/core/logic"
-import { DiscordUserDto, ProductInfoDto, StoreInfoDto, ValidateProductsDto } from "./dtos"
+import { CouponDto, DiscordUserDto, ProductInfoDto, StoreInfoDto, ValidateProductsDto } from "./dtos"
 import { RequestManager } from "@/lib"
 import { GetStoreInfoError, ValidateCouponError } from "./errors/errors"
 import { WarpStore } from "@/main"
@@ -80,8 +80,8 @@ class DiscordLogin {
 
 class Coupon {
     
-    async validateCoupon(input: { storeId: string, code: string }): Promise<Either<ValidateCouponError, { url: string }>>{
-        return await RequestManager.makeRequest< { url: string }, ValidateCouponError>("/template/v1/coupon/validate-coupon", {
+    async validateCoupon(input: { storeId: string, code: string }): Promise<Either<ValidateCouponError, CouponDto>>{
+        return await RequestManager.makeRequest< CouponDto, ValidateCouponError>("/template/v1/coupon/validate-coupon", {
             method: "POST",
             body: input
         })
