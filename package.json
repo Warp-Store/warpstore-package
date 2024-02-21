@@ -1,6 +1,6 @@
 {
     "name": "@warpstore/warpstore-package",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "description": "",
     "main": "dist/src/main.js",
     "types": "dist/src/main.d.ts",
