@@ -12,10 +12,10 @@ import { WarpStore } from "./main"
     })
 
     console.log(response.value)
-    if(response.isFailure()){
+    if (response.isFailure()) {
 
         return
     }
-    
+
 })()
 "sdddddsdddddddddddddddddd"

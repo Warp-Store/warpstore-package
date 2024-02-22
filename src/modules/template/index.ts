@@ -5,5 +5,5 @@ export class Template {
 
     v1: TemplateV1 = new TemplateV1()
 
-    
+
 }

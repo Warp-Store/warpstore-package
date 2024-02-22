@@ -17,14 +17,14 @@ export class TemplateV1 {
 }
 
 class Store {
-    async getInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreInfoDto>>{
+    async getInfo(input: TemplateV1.GetStoreInfoInputDto = {} as any): Promise<Either<GetStoreInfoError, StoreInfoDto>> {
         const { clientInfo, ...props } = input
-    
-        if(clientInfo) {
-            if(!validateIp(clientInfo?.ip)) return failure(new GetStoreInfoError("InvalidIpError"))
-            if(typeof clientInfo?.userAgent !== "string") return failure(new GetStoreInfoError("InvalidUserAgent"))
+
+        if (clientInfo) {
+            if (!validateIp(clientInfo?.ip)) return failure(new GetStoreInfoError("InvalidIpError"))
+            if (typeof clientInfo?.userAgent !== "string") return failure(new GetStoreInfoError("InvalidUserAgent"))
         }
-    
+
         return await RequestManager.makeRequest<StoreInfoDto, GetStoreInfoError>("/template/v1/store-info", {
             method: "GET",
             query: props,
@@ -38,39 +38,39 @@ class Store {
 }
 
 class Product {
-    async getProducts(input: TemplateV1.GetProductsInputDto): Promise<Either<DomainError, ProductInfoDto>>{
+    async getProducts(input: TemplateV1.GetProductsInputDto): Promise<Either<DomainError, ProductInfoDto>> {
         return await RequestManager.makeRequest<ProductInfoDto, DomainError>("/template/v1/products", {
             method: "GET",
             query: input
         })
     }
-    
-    async validateProducts(input: { productsIds: string[] }): Promise<Either<DomainError, ValidateProductsDto>>{
+
+    async validateProducts(input: { productsIds: string[] }): Promise<Either<DomainError, ValidateProductsDto>> {
         return await RequestManager.makeRequest<ValidateProductsDto, DomainError>("/template/v1/validate-products", {
             method: "POST",
             body: input
         })
     }
-    
+
 }
 
 class DiscordLogin {
-    
-    async getLoginUrl(input: { storeId: string }): Promise<Either<DomainError, { url: string }>>{
-        return await RequestManager.makeRequest< { url: string }, DomainError>("/template/v1/discord-login-url", {
+
+    async getLoginUrl(input: { storeId: string }): Promise<Either<DomainError, { url: string }>> {
+        return await RequestManager.makeRequest<{ url: string }, DomainError>("/template/v1/discord-login-url", {
             method: "GET",
             query: input
         })
     }
-    
-    async changeCodeForToken(input: { code: string, storeId: string }): Promise<Either<DomainError, { accessToken: string }>>{
-        return await RequestManager.makeRequest< { accessToken: string }, DomainError>("/template/v1/discord-login/change-code-for-token", {
+
+    async changeCodeForToken(input: { code: string, storeId: string }): Promise<Either<DomainError, { accessToken: string }>> {
+        return await RequestManager.makeRequest<{ accessToken: string }, DomainError>("/template/v1/discord-login/change-code-for-token", {
             method: "GET",
             query: input
         })
     }
-    
-    async getCurrentUser(input: { accessToken: string, storeId: string }): Promise<Either<DomainError, DiscordUserDto>>{
+
+    async getCurrentUser(input: { accessToken: string, storeId: string }): Promise<Either<DomainError, DiscordUserDto>> {
         return await RequestManager.makeRequest<DiscordUserDto, DomainError>("/template/v1/discord-login/current-user", {
             method: "GET",
             query: input
@@ -79,14 +79,14 @@ class DiscordLogin {
 }
 
 class Coupon {
-    
-    async validateCoupon(input: { storeId: string, code: string }): Promise<Either<ValidateCouponError, CouponDto>>{
-        return await RequestManager.makeRequest< CouponDto, ValidateCouponError>("/template/v1/coupon/validate-coupon", {
+
+    async validateCoupon(input: { storeId: string, code: string }): Promise<Either<ValidateCouponError, CouponDto>> {
+        return await RequestManager.makeRequest<CouponDto, ValidateCouponError>("/template/v1/coupon/validate-coupon", {
             method: "POST",
             body: input
         })
     }
-    
+
 }
 
 export namespace TemplateV1 {
