@@ -38,8 +38,8 @@ class Store {
 }
 
 class Product {
-    async getProducts(input: TemplateV1.GetProductsInputDto): Promise<Either<DomainError, ProductInfoDto>> {
-        return await RequestManager.makeRequest<ProductInfoDto, DomainError>("/template/v1/products", {
+    async getProducts(input: TemplateV1.GetProductsInputDto): Promise<Either<DomainError, ProductInfoDto[]>> {
+        return await RequestManager.makeRequest<ProductInfoDto[], DomainError>("/template/v1/products", {
             method: "GET",
             query: input
         })
@@ -92,6 +92,7 @@ class Coupon {
 export namespace TemplateV1 {
 
     export type GetProductsInputDto = {
+        storeId: string,
         categoryId: string
         limit?: number
         page?: number
