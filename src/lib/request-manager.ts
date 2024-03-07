@@ -5,12 +5,12 @@ import { WarpStore } from "@/main";
 export class RequestManager {
 
     static async makeRequest<TResponse, TError,>(path: string, httpInput: RequestManager.HttpInput = {} as any): Promise<Either<TError, TResponse>> {
-    
+
         const { body, headers, query, method } = httpInput
 
         const url = new URL(WarpStore.apiUrl + path)
-        
-        if(query){
+
+        if (query) {
             Object.keys(query).forEach(key => {
                 const value: any = query
                 url.searchParams.append(key, value[key])

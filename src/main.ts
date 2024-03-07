@@ -3,17 +3,17 @@ import { Checkout } from "./modules/checkout/checkout";
 import { Template } from "./modules/template";
 
 export class WarpStore {
-    checkout: Checkout 
-    template: Template 
+    checkout: Checkout
+    template: Template
 
-    constructor(){
+    constructor(storeId?: string) {
         this.checkout = new Checkout()
         this.template = new Template()
     }
 
     static apiUrl = "https://api.warpstore.app"
 
-    static setApiUrl(url: string){
+    static setApiUrl(url: string) {
         WarpStore.apiUrl = url
     }
 }
