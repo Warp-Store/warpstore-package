@@ -87,7 +87,7 @@ export type ProductsDetails = {
 }
 
 export type ProductInfoDto = {
-    products: ProductsDetails
+    products: ProductsDetails[]
     limit: number
     page: number
     lastPage: number

@@ -38,8 +38,8 @@ class Store {
 }
 
 class Product {
-    async getProducts({ storeId, ...input }: TemplateV1.GetProductsInputDto & { storeId: string }): Promise<Either<DomainError, ProductInfoDto[]>> {
-        return await RequestManager.makeRequest<ProductInfoDto[], DomainError>("/template/v1/products", {
+    async getProducts({ storeId, ...input }: TemplateV1.GetProductsInputDto & { storeId: string }): Promise<Either<DomainError, ProductInfoDto>> {
+        return await RequestManager.makeRequest<ProductInfoDto, DomainError>("/template/v1/products", {
             method: "GET",
             query: input,
             headers: {
