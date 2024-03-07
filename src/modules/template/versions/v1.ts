@@ -92,7 +92,6 @@ class Coupon {
 export namespace TemplateV1 {
 
     export type GetProductsInputDto = {
-        storeId: string,
         categoryId: string
         limit?: number
         page?: number
