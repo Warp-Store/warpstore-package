@@ -17,7 +17,7 @@ $ npm i @warpstore/warpstore-package
 ```javascript
 const warpstore = new WarpStore()
     
-const response = await warpstore.template.v1.getStoreInfo({
+const response = await warpstore.store.v1.getInfo({
     subDomain: "seu_sub_dominio",
     // domain: "ou_seu_dominio" 
 })
