@@ -1,14 +1,13 @@
-import { PaymentMethodsEnum } from "../template/versions/dtos"
+import { PaymentMethodsEnum } from "@/modules/store/versions/v1/dto"
 
-export type Item = {
+export type OrderItemDto = {
     productId: string,
     quantity: number
     variables?: Record<string, string> | undefined
 }
 
 export type PlaceOrderInputDto = {
-    items: Item[]
-    storeId: string
+    items: OrderItemDto[]
     customer: {
         fullName: string,
         email: string,
