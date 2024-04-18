@@ -1,6 +1,6 @@
 {
     "name": "@warpstore/warpstore-package",
-    "version": "2.0.3",
+    "version": "3.0.0",
     "description": "",
     "main": "dist/src/main.js",
     "types": "dist/src/main.d.ts",
@@ -18,7 +18,7 @@
         "test:integration:skipchecks": "jest  --watch  --no-cache --runInBand --config jest.config.integration.ts",
         "test:skipchecks": "jest --passWithNoTests --watch  --no-cache --runInBand"
     },
-    "author": "",
+    "author": "Rabbit",
     "license": "ISC",
     "devDependencies": {
         "@swc/core": "^1.3.55",
