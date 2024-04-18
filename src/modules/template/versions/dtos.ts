@@ -83,7 +83,10 @@ export type ProductDetails = {
     description: string
     price: number
     image: string
-    stockQuantity: number
+    stock: {
+        quantity: number | null,
+        isAvaible: boolean
+    }
 }
 
 export type ProductInfoDto = {
