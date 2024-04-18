@@ -77,7 +77,7 @@ export type StoreInfoDto = {
     }[]
 }
 
-export type ProductsDetails = {
+export type ProductDetails = {
     id: string
     name: string
     description: string
@@ -87,7 +87,7 @@ export type ProductsDetails = {
 }
 
 export type ProductInfoDto = {
-    products: ProductsDetails[]
+    products: ProductDetails[]
     limit: number
     page: number
     lastPage: number
@@ -97,7 +97,7 @@ export type ProductInfoDto = {
 
 export type ValidateProductsDto = {
     productsNotFound: string[]
-    products: ProductsDetails[]
+    products: ProductDetails[]
 }
 
 
