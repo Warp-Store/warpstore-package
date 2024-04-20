@@ -4,6 +4,10 @@ export const PlanEnum = {
     ADVANCED: "ADVANCED"
 } as const
 
+export const TemplateEnum = {
+    PRISMA: "PRISMA"
+} as const
+
 export const PaymentMethodsEnum = {
     MERCADO_PAGO: 'MERCADO_PAGO',
     PIX: 'PIX',
@@ -37,7 +41,7 @@ export type StoreInfoDto = {
     domain: string | null
     currency: string
     keywords: string
-    template: number
+    template: keyof typeof TemplateEnum
     plan: keyof typeof PlanEnum
     discordLogin: {
         isEnabled: boolean
