@@ -14,7 +14,7 @@ export type CategoryDetailsDto = {
     id: string
     title: string
     slug: string
-    description: string
+    description: string | null
 }
 
 export type GatewayDto = {
@@ -28,7 +28,8 @@ export type StoreInfoDto = {
     id: string
     title: string
     description: string
-    body: string
+    body: string | null,
+    terms: string | null,
     logo: string
     favicon: string
     banner: string | null
@@ -50,9 +51,12 @@ export type StoreInfoDto = {
     widgets: {
         FEATURED_PRODUCT?: {
             name: "FEATURED_PRODUCT",
-            id: string
-            image: string
-            price: number
+            productId: string,
+            product : {
+                name: string,
+                price: number
+                image: string | null
+            }
         }
         DISCORD?: {
             name: "DISCORD",
@@ -69,7 +73,7 @@ export type StoreInfoDto = {
         }
     },
     visualEffects: {
-        SNOW_FLAKE?: {
+        SNOWFLAKE?: {
             color: string,
             radius: number,
             snowFlakeCount: number
