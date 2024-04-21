@@ -28,6 +28,32 @@ export type GatewayDto = {
     feeEnabled: boolean
 }
 
+export type PrismaBannerCleanDto = {
+    showLogo: boolean,
+    logoPosition: "left" | "center" | "right"
+}
+
+export type PrismaBannerFullDto = {
+    showLogo: boolean,
+    connect: {
+        title: string,
+        subTitle: string,
+        href: string
+    },
+    discord: {
+        title: string,
+        subTitle: string,
+        href: string
+    }
+}
+
+export type StoreInfoPrismaDto = {
+    template: keyof typeof TemplateEnum,
+    components: {
+        BANNER: PrismaBannerCleanDto | PrismaBannerFullDto
+    }
+}
+
 export type StoreInfoDto = {
     id: string
     title: string
@@ -41,7 +67,6 @@ export type StoreInfoDto = {
     domain: string | null
     currency: string
     keywords: string
-    template: keyof typeof TemplateEnum
     plan: keyof typeof PlanEnum
     discordLogin: {
         isEnabled: boolean
@@ -56,7 +81,7 @@ export type StoreInfoDto = {
         FEATURED_PRODUCT?: {
             name: "FEATURED_PRODUCT",
             productId: string,
-            product : {
+            product: {
                 name: string,
                 price: number
                 image: string | null
@@ -76,6 +101,11 @@ export type StoreInfoDto = {
             token: string
         }
     },
+    networkSocial: {
+        discord: string | null,
+        youtube: string | null,
+        github: string | null
+    } | null,
     visualEffects: {
         SNOWFLAKE?: {
             color: string,
