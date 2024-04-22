@@ -29,11 +29,13 @@ export type GatewayDto = {
 }
 
 export type PrismaBannerCleanDto = {
+    type: "clean",
     showLogo: boolean,
     logoPosition: "left" | "center" | "right"
 }
 
 export type PrismaBannerFullDto = {
+    type: "full",
     showLogo: boolean,
     connect: {
         title: string,
@@ -50,7 +52,7 @@ export type PrismaBannerFullDto = {
 export type StoreInfoPrismaDto = {
     template: keyof typeof TemplateEnum,
     components: {
-        BANNER: PrismaBannerCleanDto | PrismaBannerFullDto
+        Banner: PrismaBannerCleanDto | PrismaBannerFullDto
     }
 }
 
@@ -115,4 +117,4 @@ export type StoreInfoDto = {
     },
     gateways: GatewayDto[]
     categories: CategoryDetailsDto[]
-}
+} & StoreInfoPrismaDto
