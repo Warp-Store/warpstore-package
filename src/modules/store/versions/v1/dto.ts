@@ -30,22 +30,26 @@ export type GatewayDto = {
 
 export type PrismaBannerCleanDto = {
     type: "clean",
-    showLogo: boolean,
-    logoPosition: "left" | "center" | "right"
+    options: {
+        showLogo: boolean,
+        logoPosition: "left" | "center" | "right"
+    }
 }
 
 export type PrismaBannerFullDto = {
     type: "full",
-    showLogo: boolean,
-    connect: {
-        title: string,
-        subTitle: string,
-        href: string
-    },
-    discord: {
-        title: string,
-        subTitle: string,
-        href: string
+    options: {
+        showLogo: boolean,
+        connect: {
+            title: string,
+            subTitle: string,
+            href: string
+        },
+        discord: {
+            title: string,
+            subTitle: string,
+            href: string
+        }
     }
 }
 
