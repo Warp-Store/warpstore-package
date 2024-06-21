@@ -22,6 +22,15 @@ export class StoreV1 {
             } : undefined
         })
     }
+
+    async getStoreById(input: StoreV1.GetStoreByIdInput): Promise<StoreV1.GetStoreInfoOutput> {
+        return await RequestManager.makeRequest<StoreInfoDto, GetStoreInfoError>(`/template/v1/store-info/details`, {
+            method: "GET",
+            headers: {
+                "store_id": input.id
+            }
+        })
+    }
 }
 
 export namespace StoreV1 {
@@ -32,6 +41,10 @@ export namespace StoreV1 {
             ip: string
             userAgent: string
         }
+    }
+
+    export type GetStoreByIdInput = {
+        id: string
     }
 
     export type GetStoreInfoOutput = Either<GetStoreInfoError, StoreInfoDto>
