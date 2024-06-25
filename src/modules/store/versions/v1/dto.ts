@@ -99,10 +99,10 @@ export type StoreInfoDto = {
             discordURL: string
         }
         ONLINE_PLAYERS?: {
-            name: "ONLINE_PLAYERS",
-            ip: string
-            port: number
-        },
+            name: "ONLINE_PLAYERS";
+            serverIp: string;
+            serverPort: number;
+        }
         CHAT_ONLINE?: {
             name: "CHAT_ONLINE",
             token: string
