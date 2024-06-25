@@ -12,6 +12,7 @@ export const PaymentMethodsEnum = {
     MERCADO_PAGO: 'MERCADO_PAGO',
     PIX: 'PIX',
     STRIPE: 'STRIPE',
+    PAYPAL: 'PAYPAL'
 } as const
 
 export type CategoryDetailsDto = {
