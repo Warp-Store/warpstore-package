@@ -11,7 +11,6 @@ export type PlaceOrderInputDto = {
     customer: {
         fullName: string,
         email: string,
-        cpf: string,
         phone: string
     }
     gameUserReference: string
