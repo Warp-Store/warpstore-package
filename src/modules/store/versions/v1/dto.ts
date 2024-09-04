@@ -19,6 +19,7 @@ export type CategoryDetailsDto = {
     id: string
     title: string
     slug: string
+    priority: number | null
     description: string | null
 }
 
