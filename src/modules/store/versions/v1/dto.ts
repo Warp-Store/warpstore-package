@@ -5,7 +5,8 @@ export const PlanEnum = {
 } as const
 
 export const TemplateEnum = {
-    PRISMA: "PRISMA"
+    PRISMA: "PRISMA",
+    ESMERALD: "ESMERALD"
 } as const
 
 export const PaymentMethodsEnum = {
